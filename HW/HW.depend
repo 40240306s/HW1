@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1457887823 source:c:\users\123\desktop\hw\main.cpp
+	<iostream>
+	"fun.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1457880027 source:c:\users\123\desktop\hw\fun.cpp
+	<sstream>
+	<stdio.h>
+	<iostream>
+	<stdlib.h>
+	"fun.h"
+
+1457887612 c:\users\123\desktop\hw\fun.h
+	<vector>
+	<string>
+
