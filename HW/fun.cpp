@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<iostream>
 #include<stdlib.h>
-
+#include<cmath>
 #include"fun.h"
 
 using namespace std;
@@ -65,7 +65,7 @@ void Conveyor::LoadData(const char* fName)
 //        for(int j in i)cout<<j<<" ";
 //    }
 //    cout<<endl;
-fclose(f);
+    fclose(f);
 }
 
 
@@ -124,7 +124,7 @@ void Serch::Show()
 
 const std::vector<int>& ProduceBoard(int length)
 {
-   static std::vector<int> boa,num;
+    static std::vector<int> boa,num;
     num.resize(length);
     boa.resize(length);
     for(int i=0; i<length; ++i)num[i]=i;
@@ -142,5 +142,28 @@ const std::vector<int>& ProduceBoard(int length)
 
 
 
+bool Simulated_annealing::GetNext()
+{
+    if(NowTemperature<=StopTemperature)return false;
+    ++count;
+
+    int x=-1,y=-1;
+    swap(NowBoard[x],NowBoard[y]);
+
+    int neiScore= conveyor.GetTime(NowBoard);
+
+    auto Tem=[&]()
+    {
+        return exp((double)(Score-neiScore)/NowTemperature)>((float)rand()/(float)RAND_MAX);
+    };
+
+    if(neiScore<Score||Tem())
+        Score=neiScore;
+    else
+        swap(NowBoard[x],NowBoard[y]);
+
+    Lower_the_temperature();
+    return true;
+}
 
 

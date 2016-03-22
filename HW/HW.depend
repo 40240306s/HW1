@@ -6,14 +6,15 @@
 	<stdlib.h>
 	<time.h>
 
-1457880027 source:c:\users\123\desktop\hw\fun.cpp
+1458668233 source:c:\users\123\desktop\hw\fun.cpp
 	<sstream>
 	<stdio.h>
 	<iostream>
 	<stdlib.h>
+	<cmath>
 	"fun.h"
 
-1457887612 c:\users\123\desktop\hw\fun.h
+1458667846 c:\users\123\desktop\hw\fun.h
 	<vector>
 	<string>
 

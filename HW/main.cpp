@@ -13,7 +13,8 @@ int main()
     int StuffNum[3]= {20,50,100},MacNum[3]= {5,10,20};
     char fbuff[100];
     Conveyor c;
-    Serch* serch=new Iterative_Improvement(c);
+    Serch* serch=new Simulated_annealing(c);
+    //new Iterative_Improvement(c);
 
     for(int i=0; i<9; ++i)
     {
@@ -25,7 +26,7 @@ int main()
 
 
         serch->ClearCount();
-        serch->SetMaxSpan(100000000);
+        serch->SetMaxSpan(1000000);
         while(serch->Continuous())
         {
             ++time;

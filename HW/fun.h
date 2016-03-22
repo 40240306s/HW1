@@ -58,7 +58,7 @@ public:
     {
         return Score;
     }
-    void Ini(const std::vector<int>& b)
+    virtual void Ini(const std::vector<int>& b)
     {
         NowBoard=b;
         Score=conveyor.GetTime(NowBoard);
@@ -77,6 +77,23 @@ public:
     bool GetNext();
     ~Iterative_Improvement() {};
 };
+
+class Simulated_annealing:public Serch
+{
+    double NowTemperature,IniTemperature=100,StopTemperature=0.1,alpha=0.9;
+    void Lower_the_temperature() {NowTemperature*=alpha;}
+
+public:
+    Simulated_annealing(Conveyor& c):Serch(c) {}
+    virtual void Ini(const std::vector<int>& b)
+    {
+        Serch::Ini(b);
+        NowTemperature=IniTemperature;
+    }
+    bool GetNext();
+    ~Simulated_annealing() {};
+};
+
 
 void _Show(const std::vector<int>& b);
 
