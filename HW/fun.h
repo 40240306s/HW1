@@ -1,11 +1,9 @@
-
-
-
 #ifndef FUN__
 #define FUN__
 #include<vector>
 #include<string>
 #include <stdexcept>
+
 
 
 class Conveyor

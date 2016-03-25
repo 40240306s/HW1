@@ -18,25 +18,42 @@
 	<vector>
 	<string>
 
+1458916336 D
+
 1458929502 source:c:\users\123\desktop\hw1\hw\fun.cpp
+
+1458916336 source:/home/aigecko/Program/HW1/HW/fun.cpp
+
+1458928986 1f7cc9206a5d2e5d7d7dd01f0bbcfe704f706
 	<sstream>
 	<stdio.h>
 	<iostream>
 	<stdlib.h>
 	<cmath>
 	"fun.h"
+	<iostream>
+	"fun.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
 
-1458930255 c:\users\123\desktop\hw1\hw\fun.h
+1458930681 c:\users\123\desktop\hw1\hw\fun.h
 	<vector>
 	<string>
 	<stdexcept>
 	<deque>
 	<set>
 
-1458930155 source:c:\users\123\desktop\hw1\hw\main.cpp
+1458930860 source:c:\users\123\desktop\hw1\hw\main.cpp
 	<iostream>
 	"fun.h"
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
+
+1458929263 /home/aigecko/Program/HW1/HW/fun.h
+	<vector>
+	<string>
+
+1458928986 source:/home/aigecko/Program/HW1/HW/main.cpp
 
