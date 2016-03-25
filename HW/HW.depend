@@ -18,3 +18,22 @@
 	<vector>
 	<string>
 
+1458916336 source:/home/aigecko/Program/HW1/HW/fun.cpp
+	<sstream>
+	<stdio.h>
+	<iostream>
+	<stdlib.h>
+	<cmath>
+	"fun.h"
+
+1458929263 /home/aigecko/Program/HW1/HW/fun.h
+	<vector>
+	<string>
+
+1458928986 source:/home/aigecko/Program/HW1/HW/main.cpp
+	<iostream>
+	"fun.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

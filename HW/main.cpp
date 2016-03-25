@@ -1,4 +1,3 @@
-
 #include<iostream>
 #include"fun.h"
 #include<stdio.h>
@@ -13,8 +12,13 @@ int main()
     int StuffNum[3]= {20,50,100},MacNum[3]= {5,10,20};
     char fbuff[100];
     Conveyor c;
+    #ifdef SA
     Serch* serch=new Simulated_annealing(c);
-    //new Iterative_Improvement(c);
+    #elif II
+    Serch* serch=new Iterative_Improvement(c);
+    #elif TA
+
+    #endif // TA
 
     for(int i=0; i<9; ++i)
     {
