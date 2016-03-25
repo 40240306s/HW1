@@ -5,7 +5,7 @@
 #define FUN__
 #include<vector>
 #include<string>
-
+#include <stdexcept>
 
 
 class Conveyor
@@ -38,7 +38,12 @@ protected:
     int Score=0;
     std::vector<int> NowBoard;
     Conveyor& conveyor;
+    std::string Name;
 public:
+    const std::string& GetName()const
+    {
+        return Name;
+    }
     void SetMaxSpan(long long int i)
     {
         MaxSpan=i;
@@ -73,7 +78,10 @@ public:
 class Iterative_Improvement:public Serch
 {
 public:
-    Iterative_Improvement(Conveyor& c):Serch(c) {}
+    Iterative_Improvement(Conveyor& c):Serch(c)
+    {
+        Name="Iterative_Improvement";
+    }
     bool GetNext();
     ~Iterative_Improvement() {};
 };
@@ -81,10 +89,16 @@ public:
 class Simulated_annealing:public Serch
 {
     double NowTemperature,IniTemperature=100,StopTemperature=0.1,alpha=0.9;
-    void Lower_the_temperature() {NowTemperature*=alpha;}
+    void Lower_the_temperature()
+    {
+        NowTemperature*=alpha;
+    }
 
 public:
-    Simulated_annealing(Conveyor& c):Serch(c) {}
+    Simulated_annealing(Conveyor& c):Serch(c)
+    {
+        Name="Simulated_annealing";
+    }
     virtual void Ini(const std::vector<int>& b)
     {
         Serch::Ini(b);
@@ -93,29 +107,32 @@ public:
     bool GetNext();
     ~Simulated_annealing() {};
 };
-
+#include<deque>
+#include<set>
+class Tabu:public Serch
+{
+    std::deque<std::pair<int,int>> tabulist;
+    std::set<std::pair<int,int>> tabumap;
+    const size_t tabulength=8;
+public:
+    Tabu(Conveyor& c):Serch(c)
+    {
+        Name="   T   a   b   u   ";
+    }
+    virtual void Ini(const std::vector<int>& b)
+    {
+        Serch::Ini(b);
+        tabulist.clear();
+        tabumap.clear();
+    }
+    bool GetNext();
+    ~Tabu() {};
+};
 
 void _Show(const std::vector<int>& b);
 
 
 const std::vector<int>& ProduceBoard(int length);
-
-
-class Record
-{
-public:
-//    Record()
-
-
-
-
-
-
-
-
-
-};
-
 
 
 

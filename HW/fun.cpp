@@ -36,10 +36,8 @@ void Conveyor::LoadData(const char* fName)
 {
     FILE*f=fopen(fName,"r");
     if(f==0)
-    {
-        cout<<"No File\n";
-        throw new exception();
-    }
+        throw invalid_argument( (string)"No file "+fName+"!");
+
     stringstream s;
     const int maxbuffsize=5000;
     char buff[maxbuffsize];
@@ -73,12 +71,7 @@ void Conveyor::LoadData(const char* fName)
 
 bool Iterative_Improvement::GetNext()
 {
-    // if(Continuous()==false)return false;
-    vector<int> neighbor=NowBoard;
-    //cout<<"====in"<<endl;
-    //Show(NowBoard);
-    //cout<<Score<<endl;
-    //cout<<"===="<<endl;
+    vector<int>& neighbor=NowBoard;
     int min=Score,x=-1,y=-1,sco=0;
     for(int i=0,mi=NowBoard.size()-1; i<mi; ++i)
         for(int j=i+1,mj=NowBoard.size(); j<mj; ++j)
@@ -92,19 +85,11 @@ bool Iterative_Improvement::GetNext()
                 x=i;
                 y=j;
             }
-            //Show(neighbor);
-            //cout<<sco<<endl;
             swap(neighbor[i],neighbor[j]);
         }
-
-
-
     if(x==-1)return false;
     swap(NowBoard[x],NowBoard[y]);
     Score=min;
-
-
-
     return true;
 }
 
@@ -119,7 +104,6 @@ void Serch::Show()
     cout<<"=="<<Score<<"==Use:"<<count<<'/'<<MaxSpan<<endl;
     _Show(NowBoard);
     cout<<endl<<"========"<<endl;
-
 }
 
 const std::vector<int>& ProduceBoard(int length)
@@ -134,8 +118,6 @@ const std::vector<int>& ProduceBoard(int length)
         boa[i]=num[(ind=(rand()%num.size()))];
         num.erase(num.begin()+ind);
     }
-
-
     return boa;
 }
 
@@ -166,4 +148,44 @@ bool Simulated_annealing::GetNext()
     return true;
 }
 
+bool Tabu::GetNext()
+{
+    vector<int>& neighbor=NowBoard;
+    int min=Score,x=-1,y=-1,sco=0;
+    std::pair<int,int> temp;
+    for(int i=0,mi=NowBoard.size()-1; i<mi; ++i)
+    {
+        temp.first=i;
+        for(int j=i+1,mj=NowBoard.size(); j<mj; ++j)
+        {
+            temp.second=j;
+            if(tabumap.find(temp)==tabumap.end())
+            {
+                ++count;
+                swap(neighbor[i],neighbor[j]);
+                sco=conveyor.GetTime(neighbor);
+                if(sco<min)
+                {
+                    min=sco;
+                    x=i;
+                    y=j;
+                }
+                swap(neighbor[i],neighbor[j]);
+            }
+        }
+    }
+    if(x==-1)return false;
+    swap(NowBoard[x],NowBoard[y]);
+    Score=min;
+    temp.first=x;
+    temp.second=y;
+    if(tabulist.size()>=tabulength)
+    {
+        tabumap.erase(tabulist[0]);
+        tabulist.pop_front();
+    }
+    tabumap.insert(temp);
+    tabulist.push_back(temp);
+    return true;
+}
 

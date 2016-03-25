@@ -18,3 +18,25 @@
 	<vector>
 	<string>
 
+1458929502 source:c:\users\123\desktop\hw1\hw\fun.cpp
+	<sstream>
+	<stdio.h>
+	<iostream>
+	<stdlib.h>
+	<cmath>
+	"fun.h"
+
+1458930255 c:\users\123\desktop\hw1\hw\fun.h
+	<vector>
+	<string>
+	<stdexcept>
+	<deque>
+	<set>
+
+1458930155 source:c:\users\123\desktop\hw1\hw\main.cpp
+	<iostream>
+	"fun.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
