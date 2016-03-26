@@ -8,16 +8,16 @@ using namespace std;
 int main()
 {
 
-   FILE *f=freopen("HW1RESULT.txt","w",stdout);
-      if(!f)return -1;
+    FILE *f=freopen("HW1RESULT.txt","w",stdout);
+    if(!f)return -1;
     try
     {
         srand(time(0));
-        const long long int MaxSpan(10000000);
+        const long long int MaxSpan(5000000);
         int StuffNum[3]= {20,50,100},MacNum[3]= {5,10,20};
         char fbuff[100];
         Conveyor c;
-        Serch* _serch[3]= {new Simulated_annealing(c),new Iterative_Improvement(c),new Tabu(c)};
+        Serch* _serch[3]= {new Iterative_Improvement(c),new Simulated_annealing(c),new Tabu(c)};
 
 #ifdef SA
         Serch* serch=new Simulated_annealing(c);
@@ -30,37 +30,50 @@ int main()
         {
             sprintf(fbuff,"tai%d_%d_1.txt",StuffNum[i/3],MacNum[i%3]);
             c.LoadData(fbuff);
-          /*  int _min=100000,co=0;
-
-            std::vector<int> temp=StartBoard(c.MaxStuff());
-            do
+            const int maxtesttime=20;
+            long long int total=0,gtotal=0,min=0xfffffff,max=0,time=0,gtime=0,gmin=min,gmax=max;
+            auto GetSecond=[](time_t t)
             {
-                int num=c.GetTime(temp);
-                if(_min>num)_min=num;
-              //  cout<<num<<endl;
-                co++;
-            }
-            while(next_permutation(temp.begin(),temp.end()));
-            cout<<"min "<<_min<<' '<<co;
-            return 0;
-            */long long int total=0,min=0xfffffff,max=0,time=0;
+                return (double)(clock()-t)/1000;
+            };
+            auto PutBar=[](int t)
+            {
+               for(int i=0; i<t; ++i)cout<<'=';
+            cout<<endl;
+            };
+
             for(auto serch :_serch)
             {
-                serch->ClearCount();
-                serch->SetMaxSpan(MaxSpan);
-                while(serch->Continuous())
+                cout<<serch->GetName()<<endl;
+                time_t timebig=clock();
+                for(int testtime=0; testtime<maxtesttime; ++testtime)
                 {
-                    ++time;
-                    serch->Ini(ProduceBoard(c.MaxStuff()));
-                    //serch->Show();
-                    while(true)if(serch->GetNext()==false)break;
-                    total+=serch->GetScore();
-                    if(min>serch->GetScore())min=serch->GetScore();
-                    if(max<serch->GetScore())max=serch->GetScore();
-                    //serch->Show();
+                    time_t timesmall=clock();
+                    serch->ClearCount();
+                    serch->SetMaxSpan(MaxSpan);
+                    time=0;
+                    total=0;
+                    while(serch->Continuous())
+                    {
+                        ++time;
+                        serch->Ini(ProduceBoard(c.MaxStuff()));
+                        while(true)if(serch->GetNext()==false)break;
+                        total+=serch->GetScore();
+                        if(min>serch->GetScore())min=serch->GetScore();
+                        if(max<serch->GetScore())max=serch->GetScore();
+                    }
+                    gtotal+=total;
+                    gtime+=time;
+                    if(gmin>min)gmin=min;
+                    if(gmax<max)gmax=max;
+
+                    cout<<"No."<<testtime+1<<"\tmax "<<max<<"\tmin "<<min<<"\tmean "<<(double)total/time<<"\t次數 "<<time<<"時間"<<GetSecond(timesmall)<<endl;
                 }
-                cout<<serch->GetName()<<"\tmax "<<max<<"  min "<<min<<" time "<<time<<" mean "<<(double)total/time<<endl;
+                cout<<"整理:max "<<gmax<<"\tmin "<<gmin<<"\tmean "<<(double)gtotal/gtime<<"時間經過:"<<GetSecond(timebig)<<endl;
+
+                 PutBar(40);
             }
+            PutBar(80);
         }
         for(auto serch :_serch)
             delete serch;
@@ -70,6 +83,6 @@ int main()
         cout<<e.what();
     }
 
-//    fclose(f);
+    fclose(f);
 }
 
