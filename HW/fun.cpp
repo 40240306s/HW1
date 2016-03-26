@@ -10,27 +10,37 @@ using namespace std;
 
 
 
-int Conveyor::GetTime(const std::vector<int>& machinelist)
+//int Conveyor::GetTime(const std::vector<int>& machinelist)
+//{
+//    //cout<<endl;
+//    //for(int& i:machinelist){--i;}
+//    for(int& e in mac_Time_left)e=0;
+//    //  return 0;
+//    for( int i=0; i<maxstuff; ++i)
+//    {
+//        auto& ThisStuff=StuffTimeUse[i];
+//        mac_Time_left[0]+=ThisStuff[machinelist[0]];
+//        for( int j=1; j<maxmac; ++j)
+//        {
+//            if(mac_Time_left[j-1]<=mac_Time_left[j])
+//                mac_Time_left[j]+=ThisStuff[machinelist[j]];
+//            else
+//                mac_Time_left[j]=mac_Time_left[j-1]+ThisStuff[machinelist[j]];
+//        }
+//    }
+//    return mac_Time_left[maxmac-1];
+//}
+int Conveyor::GetTime(const std::vector<int>& joblist)
 {
-    //cout<<endl;
-    //for(int& i:machinelist){--i;}
-    for(int& e in mac_Time_left)e=0;
-    //  return 0;
-    for( int i=0; i<maxstuff; ++i)
-    {
-        auto& ThisStuff=StuffTimeUse[i];
-        mac_Time_left[0]+=ThisStuff[machinelist[0]];
-        for( int j=1; j<maxmac; ++j)
-        {
-            if(mac_Time_left[j-1]<=mac_Time_left[j])
-                mac_Time_left[j]+=ThisStuff[machinelist[j]];
-            else
-                mac_Time_left[j]=mac_Time_left[j-1]+ThisStuff[machinelist[j]];
-        }
-    }
-    return mac_Time_left[maxmac-1];
-}
+    CountTimeUse[0][0]=StuffTimeUse[joblist[0]][0];
 
+    for(int i=1; i<maxmac; ++i)   CountTimeUse[0][i]=CountTimeUse[0][i-1]+StuffTimeUse[joblist[0]][i];
+    for(int i=1; i<maxstuff; ++i) CountTimeUse[i][0]=CountTimeUse[i-1][0]+StuffTimeUse[joblist[i]][0];
+    for( int j=1; j<maxmac; ++j)
+        for( int i=1; i<maxstuff; ++i)
+            CountTimeUse[i][j]=max(CountTimeUse[i-1][j],CountTimeUse[i][j-1])+StuffTimeUse[joblist[i]][j];
+    return CountTimeUse[maxstuff-1][maxmac-1];
+}
 
 void Conveyor::LoadData(const char* fName)
 {
@@ -47,7 +57,9 @@ void Conveyor::LoadData(const char* fName)
     mac_Time_left.resize(maxmac);
     cout<<"maxstuff:"<<maxstuff<<" maxmac:"<<maxmac<<" "<<Name<<endl;
     StuffTimeUse.resize(maxstuff);
+    CountTimeUse.resize(maxstuff);
     for(auto &mac in StuffTimeUse)mac.resize(maxmac);
+    for(auto &mac in CountTimeUse)mac.resize(maxmac);
     for(int i=0; i<maxmac; ++i)
     {
         s.str("");
@@ -106,7 +118,7 @@ void Serch::Show()
     cout<<endl<<"========"<<endl;
 }
 
-const std::vector<int>& ProduceBoard(int length)
+const std::vector<int> ProduceBoard(int length)
 {
     static std::vector<int> boa,num;
     num.resize(length);
@@ -120,7 +132,13 @@ const std::vector<int>& ProduceBoard(int length)
     }
     return boa;
 }
-
+const std::vector<int> StartBoard(int length)
+{
+    static std::vector<int> boa;
+    boa.resize(length);
+    for(int i=0; i<length; ++i)boa[i]=i;
+    return boa;
+}
 
 
 

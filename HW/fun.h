@@ -10,6 +10,7 @@ class Conveyor
 {
     std::vector<int> mac_Time_left;
     std::vector<std::vector<int>> StuffTimeUse;
+    std::vector<std::vector<int>> CountTimeUse;
     std::string Name;
     int maxmac=0,maxstuff=0;
 public:
@@ -20,9 +21,9 @@ public:
     }
     int GetTime(const std::vector<int>&);
     void LoadData(const char* fName);
-    int MaxMac()const
+    int MaxStuff()const
     {
-        return maxmac;
+        return maxstuff;
     }
 };
 
@@ -130,8 +131,8 @@ public:
 void _Show(const std::vector<int>& b);
 
 
-const std::vector<int>& ProduceBoard(int length);
-
+const std::vector<int> ProduceBoard(int length);
+const std::vector<int> StartBoard(int length);
 
 
 #endif // FUN__

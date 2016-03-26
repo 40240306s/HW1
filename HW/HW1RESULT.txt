@@ -1,36 +1,36 @@
 maxstuff:20 maxmac:5 tai20_5_1
-Simulated_annealing	max 1565  min 1358 time 1516 mean 1452.22
-Iterative_Improvement	max 1565  min 1358 time 4857 mean 1399.26
-   T   a   b   u   	max 1565  min 1358 time 8616 mean 1388.6
+Simulated_annealing	max 1732  min 1358 time 1516 mean 1514.57
+Iterative_Improvement	max 1732  min 1297 time 1599 mean 1504.92
+   T   a   b   u   	max 1732  min 1278 time 1691 mean 1495.06
 maxstuff:20 maxmac:10 tai20_10_1
-Simulated_annealing	max 2215  min 1792 time 1516 mean 2003.53
-Iterative_Improvement	max 2215  min 1716 time 1894 mean 1954.34
-   T   a   b   u   	max 2215  min 1716 time 2293 mean 1920.32
+Simulated_annealing	max 2307  min 1796 time 1516 mean 2023.17
+Iterative_Improvement	max 2307  min 1618 time 1560 mean 2013.15
+   T   a   b   u   	max 2307  min 1592 time 1607 mean 2002.96
 maxstuff:20 maxmac:20 tai20_20_1
-Simulated_annealing	max 3025  min 2490 time 1516 mean 2745.09
-Iterative_Improvement	max 3025  min 2287 time 1564 mean 2732.96
-   T   a   b   u   	max 3025  min 2275 time 1617 mean 2720.62
+Simulated_annealing	max 3108  min 2527 time 1516 mean 2774.92
+Iterative_Improvement	max 3108  min 2338 time 1571 mean 2762.2
+   T   a   b   u   	max 3108  min 2327 time 1622 mean 2750.94
 maxstuff:50 maxmac:5 tai50_5_1
-Simulated_annealing	max 3326  min 2899 time 1516 mean 3106.1
-Iterative_Improvement	max 3326  min 2899 time 4723 mean 2980.85
-   T   a   b   u   	max 3326  min 2899 time 8375 mean 2955.13
+Simulated_annealing	max 3656  min 2827 time 1516 mean 3189.97
+Iterative_Improvement	max 3656  min 2735 time 1527 mean 3186.83
+   T   a   b   u   	max 3656  min 2729 time 1538 mean 3183.77
 maxstuff:50 maxmac:10 tai50_10_1
-Simulated_annealing	max 4072  min 3533 time 1516 mean 3766.08
-Iterative_Improvement	max 4072  min 3459 time 1905 mean 3712.62
-   T   a   b   u   	max 4072  min 3459 time 2332 mean 3674.95
+Simulated_annealing	max 4435  min 3478 time 1516 mean 3832
+Iterative_Improvement	max 4435  min 3142 time 1521 mean 3829.92
+   T   a   b   u   	max 4435  min 3142 time 1525 mean 3828.22
 maxstuff:50 maxmac:20 tai50_20_1
-Simulated_annealing	max 5232  min 4565 time 1516 mean 4884.48
-Iterative_Improvement	max 5232  min 4226 time 1561 mean 4868.25
-   T   a   b   u   	max 5232  min 4217 time 1610 mean 4851.73
+Simulated_annealing	max 5265  min 4444 time 1516 mean 4874.64
+Iterative_Improvement	max 5265  min 4065 time 1520 mean 4872.66
+   T   a   b   u   	max 5265  min 4047 time 1524 mean 4870.6
 maxstuff:100 maxmac:5 tai100_5_1
-Simulated_annealing	max 6340  min 5646 time 1516 mean 6090.16
-Iterative_Improvement	max 6340  min 5646 time 4429 mean 5802.71
-   T   a   b   u   	max 6340  min 5646 time 7787 mean 5738.18
+Simulated_annealing	max 6610  min 5771 time 1516 mean 6141.68
+Iterative_Improvement	max 6610  min 5527 time 1518 mean 6140.87
+   T   a   b   u   	max 6610  min 5495 time 1521 mean 6139.7
 maxstuff:100 maxmac:10 tai100_10_1
-Simulated_annealing	max 7336  min 6515 time 1516 mean 6866.52
-Iterative_Improvement	max 7336  min 6453 time 1899 mean 6794.46
-   T   a   b   u   	max 7336  min 6453 time 2300 mean 6744.73
+Simulated_annealing	max 7730  min 6519 time 1516 mean 6907.02
+Iterative_Improvement	max 7730  min 5957 time 1517 mean 6906.39
+   T   a   b   u   	max 7730  min 5957 time 1518 mean 6905.78
 maxstuff:100 maxmac:20 tai100_20_1
-Simulated_annealing	max 8417  min 7446 time 1516 mean 7855.51
-Iterative_Improvement	max 8417  min 7123 time 1562 mean 7836.17
-   T   a   b   u   	max 8417  min 7120 time 1611 mean 7817.02
+Simulated_annealing	max 8422  min 7347 time 1516 mean 7807.72
+Iterative_Improvement	max 8422  min 6712 time 1517 mean 7806.99
+   T   a   b   u   	max 8422  min 6570 time 1518 mean 7806.18

@@ -3,17 +3,17 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-
+#include <algorithm>
 using namespace std;
 int main()
 {
 
-    FILE *f=freopen("HW1RESULT.txt","w",stdout);
-    if(!f)return -1;
+   FILE *f=freopen("HW1RESULT.txt","w",stdout);
+      if(!f)return -1;
     try
     {
         srand(time(0));
-        const long long int MaxSpan(100000);
+        const long long int MaxSpan(10000000);
         int StuffNum[3]= {20,50,100},MacNum[3]= {5,10,20};
         char fbuff[100];
         Conveyor c;
@@ -26,13 +26,24 @@ int main()
 #elif TA
 
 #endif // TA
-
-
         for(int i=0; i<9; ++i)
         {
             sprintf(fbuff,"tai%d_%d_1.txt",StuffNum[i/3],MacNum[i%3]);
             c.LoadData(fbuff);
-            long long int total=0,min=0xfffffff,max=0,time=0;
+          /*  int _min=100000,co=0;
+
+            std::vector<int> temp=StartBoard(c.MaxStuff());
+            do
+            {
+                int num=c.GetTime(temp);
+                if(_min>num)_min=num;
+              //  cout<<num<<endl;
+                co++;
+            }
+            while(next_permutation(temp.begin(),temp.end()));
+            cout<<"min "<<_min<<' '<<co;
+            return 0;
+            */long long int total=0,min=0xfffffff,max=0,time=0;
             for(auto serch :_serch)
             {
                 serch->ClearCount();
@@ -40,7 +51,7 @@ int main()
                 while(serch->Continuous())
                 {
                     ++time;
-                    serch->Ini(ProduceBoard(c.MaxMac()));
+                    serch->Ini(ProduceBoard(c.MaxStuff()));
                     //serch->Show();
                     while(true)if(serch->GetNext()==false)break;
                     total+=serch->GetScore();
@@ -59,6 +70,6 @@ int main()
         cout<<e.what();
     }
 
-    fclose(f);
+//    fclose(f);
 }
 
